@@ -12,6 +12,8 @@ Using the defaults, or some other standardized list of folder names,
 all of your projects can have the same general folder structure. This can help 
 you write cleaner, more portable, and more reproducible code.
 
+## Default Folders
+
 The package defaults provide "code", "data", "doc", "figures" and 
 "results" folders. You can specify alternatives in a YAML configuration file, 
 which this package will read and use instead.
@@ -20,6 +22,8 @@ You will note there is a "code" folder. If your scripts are in the "code"
 folder, your code will still be able to find the other folders, thanks 
 to the [here](https://cran.r-project.org/web/packages/here/index.html) 
 package.
+
+## RStudio Projects
 
 This package is intended to be used with [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). 
 A benefit of using RStudio Projects is, once you open the project in RStudio, 
@@ -80,7 +84,7 @@ Or you can add to the standard folder paths like this:
 
 
 ```r
-file_path <- here(folders$data, "iris.csv")
+file_path <- here(folders$data, "data.csv")
 ```
 
 ## Basic Usage Scenario
@@ -109,12 +113,11 @@ dir.exists(here(folders$data))
 ```
 
 ```r
-# Get a dataset to use for writing a CSV file to the data folder.
-library(datasets)
-data(iris)
+# Create a dataset to use for writing a CSV file to the data folder.
+df <- data.frame(x = letters[1:3], y = 1:3)
 
 # Confirm that the CSV file does not yet exist.
-file_path <- here(folders$data, "iris.csv")
+file_path <- here(folders$data, "data.csv")
 file.exists(file_path)
 ```
 
@@ -124,7 +127,7 @@ file.exists(file_path)
 
 ```r
 # Write the CSV file.
-write.csv(iris, file_path, row.names = FALSE)
+write.csv(df, file_path, row.names = FALSE)
 
 # Verify that the file was written.
 file.exists(file_path)
@@ -139,7 +142,7 @@ list.files(dirname(file_path))
 ```
 
 ```
-## [1] "iris.csv"
+## [1] "data.csv"
 ```
 
 ## Configuration file
