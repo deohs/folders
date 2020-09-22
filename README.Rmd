@@ -106,5 +106,5 @@ for you.
 - [here](https://cran.r-project.org/web/packages/here/index.html)
 - [yaml](https://cran.r-project.org/web/packages/yaml/index.html)
 
-You will need to load the *here* package with you scripts to make the most use 
+You will need to load the *here* package with your scripts to make the most use 
 of the *folders* package, as seen in the example above.
