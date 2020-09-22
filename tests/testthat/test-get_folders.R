@@ -1,5 +1,6 @@
 test_that("get_folders works", {
   folders <- get_folders()
+  expect_equal(file.exists(here::here('folders.yml')), TRUE)
   folders_default <- list(
     code = 'code',
     data = 'data',
@@ -7,6 +8,6 @@ test_that("get_folders works", {
     figures = 'figures',
     results = 'results'
   )
-  cleanup_result <- cleanup_folders(folders, keep_conf = FALSE)
+  unlink(here::here('folders.yml'))
   expect_equal(folders, folders_default)
 })
