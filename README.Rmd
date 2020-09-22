@@ -31,7 +31,7 @@ A benefit of using RStudio Projects is, once you open the project in RStudio,
 you will be placed in the parent folder of your project. All of your work in the 
 project will be relative to that location, especially if your project only uses 
 files and subfolders within that parent folder. This the most portable way to 
-work. Further if you are working with a git repository, you will most likely want 
+work. Further, if you are working with a git repository, you will most likely want 
 to clone this repository into an RStudio Project. However, this package will 
 also work outside of RStudio Projects, more or less.
 
