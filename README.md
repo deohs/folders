@@ -16,6 +16,20 @@ The package defaults provide "code", "data", "doc", "figures" and
 "results" folders. You can specify alternatives in a YAML configuration file, 
 which this package will read and use instead.
 
+You will note there is a "code" folder. If your scripts are in the "code" 
+folder, your code will still be able to find the other folders, thanks 
+to the [here](https://cran.r-project.org/web/packages/here/index.html) 
+package.
+
+This package is intended to be used with [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). 
+A benefit of using RStudio Projects is, once you open the project in RStudio, 
+you will be placed in the parent folder of your project. All of your work in the 
+project will be relative to that location, especially if your project only uses 
+files and subfolders within that parent folder. This the most portable way to 
+work. Further if you are working with a git repository, you will most likely want 
+to clone this repository into an RStudio Project. However, this package will 
+also work outside of RStudio Projects, more or less.
+
 ## Installation
 
 You can install the development version from [GitHub](https://github.com/deohs/folders) with:
@@ -30,10 +44,46 @@ Or, if you prefer using [pacman](https://github.com/trinker/pacman):
 
 
 ```r
+if (!require(pacman)) install.packages('pacman', repos = 'https://cloud.r-project.org')
 pacman::p_load_gh("deohs/folders")
 ```
 
-## Usage
+## Basic Usage
+
+The following code chunk can be used at the beginning of your scripts to make 
+use of standardize folders in your projects.
+
+
+```r
+# Load packages, installing as needed.
+if (!require(pacman)) install.packages('pacman', repos = 'https://cloud.r-project.org')
+pacman::p_load(here)
+pacman::p_load_gh("deohs/folders")
+
+# Get the list of standard folders and create any folders which are missing.
+folders <- get_folders()
+result <- create_folders(folders)
+```
+
+Then, later in your scripts, you can refer to folders like this:
+
+
+```r
+dir.exists(here(folders$data))
+```
+
+```
+## [1] TRUE
+```
+
+Or you can add to the standard folder paths like this: 
+
+
+```r
+file_path <- here(folders$data, "iris.csv")
+```
+
+## Basic Usage Scenario
 
 Here is an example of a script which will initialize the folders and then write 
 a data file to the `folders$data` folder. You will see that there are no 
@@ -41,13 +91,10 @@ hardcoded paths for files or folders and no use of `setwd()`.
 
 
 ```r
-# Load packages.
-library(here)
-library(folders)
-
-# Or use pacman:
-# pacman::p_load(here)
-# pacman::p_load_gh("deohs/folders")
+# Load packages, installing as needed.
+if (!require(pacman)) install.packages('pacman', repos = 'https://cloud.r-project.org')
+pacman::p_load(here)
+pacman::p_load_gh("deohs/folders")
 
 # Get the list of standard folders and create any folders which are missing.
 folders <- get_folders()
@@ -113,10 +160,9 @@ default:
   results: results
 ```
 
-You will note there is a "code" folder. If your scripts are in the "code" 
-folder, your code will still be able to find the other folders, thanks 
-to the [here](https://cran.r-project.org/web/packages/here/index.html) 
-package.
+Once this file has been created, you can edit it to modify the default 
+folder paths. However, we advise you to stick to the defaults to maintain 
+maximum consistency between your projects.
 
 ## Dependencies
 
