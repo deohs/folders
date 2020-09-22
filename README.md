@@ -1,4 +1,4 @@
-# folders"
+# folders
 
 This R package supports the use of standardized folder names in R projects. The 
 idea is to provide some functions to allow you to avoid using hardcoded paths 
