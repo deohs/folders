@@ -27,12 +27,31 @@ package.
 
 This package is intended to be used with [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). 
 A benefit of using RStudio Projects is, once you open the project in RStudio, 
-you will be placed in the parent folder of your project. All of your work in the 
-project will be relative to that location, especially if your project only uses 
-files and subfolders within that parent folder. This the most portable way to 
-work. Further, if you are working with a git repository, you will most likely want 
-to clone this repository into an RStudio Project. However, this package will 
-also work outside of RStudio Projects, more or less.
+you will be placed in the parent folder of your project (aka. "project root"). 
+All of your work in the project will be relative to that location, especially if 
+your project only uses files and subfolders within that parent folder. This the 
+most portable way to work. Further, if you are working with a git repository, you 
+will most likely want to clone this repository into an RStudio Project. 
+
+## Other Supported Environments
+
+This package will also work outside of RStudio Projects. For example, 
+if you are working in a folder tracked by git, then the top level of the git 
+repository will be identified as the "project root" folder. This behavior is 
+determined by the [here](https://cran.r-project.org/web/packages/here/index.html) 
+package.
+
+If you are neither working in an RStudio project, nor in a folder tracked by a 
+version control system (git or Subversion), nor an R package development 
+folder, then the current working directory at the time the `here` package was 
+loaded will be treated as the "project root" folder. 
+
+Or you can force a folder to be the "project root" with a `.here` file. You 
+can create one with the `here::set_here()` function. See the 
+[here](https://cran.r-project.org/web/packages/here/index.html) package 
+documentation for more information. However, if your goal is to write more 
+reproducible code and follow best practices, you should really ask yourself why 
+you are not using RStudio Projects or version control.
 
 ## Installation
 
@@ -138,11 +157,24 @@ file.exists(file_path)
 ```
 
 ```r
-list.files(dirname(file_path))
+# Cleanup unused (empty) folders. (Optional, as you may prefer to keep them.)
+result <- cleanup_folders(folders)
+
+# Verify that the data folder and CSV file still exist after cleanup.
+file.exists(file_path)
 ```
 
 ```
-## [1] "data.csv"
+## [1] TRUE
+```
+
+```r
+# Verify that the configuration file still exists after cleanup.
+file.exists(here("folders.yml"))
+```
+
+```
+## [1] TRUE
 ```
 
 ## Configuration file

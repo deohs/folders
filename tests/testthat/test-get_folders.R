@@ -1,8 +1,4 @@
 test_that("get_folders works", {
-  cleanup <- function(folders) {
-    sapply(here::here(folders), unlink, recursive = TRUE)
-    unlink(here::here('folders.yml'))
-  }
   folders <- get_folders()
   folders_default <- list(
     code = 'code',
@@ -11,6 +7,6 @@ test_that("get_folders works", {
     figures = 'figures',
     results = 'results'
   )
-  cleanup(folders)
+  cleanup_result <- cleanup_folders(folders, keep_conf = FALSE)
   expect_equal(folders, folders_default)
 })

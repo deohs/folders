@@ -1,6 +1,6 @@
 #' Create Folders
 #'
-#' Create a standardized set of folders under a parent folder for an R project.
+#' Create a standardized set of folders under a parent folder of an R project.
 #' @param folders (list) A named list of standard folders for an R project. 
 #'     (Default: folders::get_folders())
 #' @param showWarnings (boolean) Show warnings. See: base::dir.create().
@@ -22,10 +22,14 @@
 #' \dontrun{
 #' folders <- get_folders()
 #' result <- create_folders(folders)
+#' 
 #' dir.exists(here::here(folders$data))
 #' sapply(here::here(folders), dir.exists)
-#' df <- data.frame(x = letters[1:3], y = 1:3
-#' write.csv(df, here::here(folders$data, "data.csv"), row.names = FALSE)
+#' 
+#' df <- data.frame(x = letters[1:3], y = 1:3)
+#' file_path <- here::here(folders$data, "data.csv")
+#' write.csv(df, file_path, row.names = FALSE)
+#' file.exists(file_path)
 #' }
 create_folders <- function(folders = folders::get_folders(), 
                            showWarnings = FALSE, recursive = TRUE) {

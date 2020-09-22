@@ -1,11 +1,13 @@
 Package: folders
 Title: Standardized folders for R projects
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Brian",
            family = "High",
            role = c("aut", "cre"),
            email = "bhigh@live.com")
+URL: https://github.com/deohs/folders
+BugReports: https://github.com/deohs/folders/issues
 Description: Supports the use of standardized folder names in R projects.
 Depends: R (>= 3.6.3)
 License: MIT + file LICENSE
@@ -15,6 +17,6 @@ Imports:
     config (>= 0.3),
     here (>= 0.1),
     yaml (>= 2.2.1)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Suggests:
     testthat (>= 2.3.2)

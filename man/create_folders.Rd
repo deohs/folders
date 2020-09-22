@@ -4,8 +4,11 @@
 \alias{create_folders}
 \title{Create Folders}
 \usage{
-create_folders(folders = folders::get_folders(), showWarnings = FALSE,
-  recursive = TRUE)
+create_folders(
+  folders = folders::get_folders(),
+  showWarnings = FALSE,
+  recursive = TRUE
+)
 }
 \arguments{
 \item{folders}{(list) A named list of standard folders for an R project. 
@@ -21,7 +24,7 @@ See: base::dir.create(). (Default: TRUE)}
 (vector) A named vector for the results of "dir.create" operations.
 }
 \description{
-Create a standardized set of folders under a parent folder for an R project.
+Create a standardized set of folders under a parent folder of an R project.
 }
 \section{Details}{
 
@@ -39,10 +42,14 @@ base::dir.exists() as shown in the examples below.
 \dontrun{
 folders <- get_folders()
 result <- create_folders(folders)
+
 dir.exists(here::here(folders$data))
 sapply(here::here(folders), dir.exists)
-df <- data.frame(x = letters[1:3], y = 1:3
-write.csv(df, here::here(folders$data, "data.csv"), row.names = FALSE)
+
+df <- data.frame(x = letters[1:3], y = 1:3)
+file_path <- here::here(folders$data, "data.csv")
+write.csv(df, file_path, row.names = FALSE)
+file.exists(file_path)
 }
 }
 \keyword{configuration,}

@@ -4,8 +4,11 @@
 \alias{get_folders}
 \title{Get Folders}
 \usage{
-get_folders(conf_file = here::here("folders.yml"),
-  conf_name = Sys.getenv("R_CONFIG_NAME"), save_conf = TRUE)
+get_folders(
+  conf_file = here::here("folders.yml"),
+  conf_name = Sys.getenv("R_CONFIG_NAME"),
+  save_conf = TRUE
+)
 }
 \arguments{
 \item{conf_file}{(character) Configuration file to read/write.
