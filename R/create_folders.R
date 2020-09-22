@@ -24,9 +24,8 @@
 #' result <- create_folders(folders)
 #' dir.exists(here::here(folders$data))
 #' sapply(here::here(folders), dir.exists)
-#' library(datasets)
-#' data(iris)
-#' write.csv(iris, here::here(folders$data, "iris.csv"), row.names = FALSE)
+#' df <- data.frame(x = letters[1:3], y = 1:3
+#' write.csv(df, here::here(folders$data, "data.csv"), row.names = FALSE)
 #' }
 create_folders <- function(folders = folders::get_folders(), 
                            showWarnings = FALSE, recursive = TRUE) {

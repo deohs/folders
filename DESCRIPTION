@@ -16,3 +16,5 @@ Imports:
     here (>= 0.1),
     yaml (>= 2.2.1)
 RoxygenNote: 6.1.1
+Suggests:
+    testthat (>= 2.3.2)
