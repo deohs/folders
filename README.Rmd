@@ -54,7 +54,7 @@ pacman::p_load_gh("deohs/folders")
 ## Basic Usage
 
 The following code chunk can be used at the beginning of your scripts to make 
-use of standardize folders in your projects.
+use of standardized folders in your projects.
 
 ```{r}
 # Load packages, installing as needed.
