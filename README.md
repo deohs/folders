@@ -50,11 +50,11 @@ library(folders)
 # pacman::p_load_gh("deohs/folders")
 
 # Get the list of standard folders and create any folders which are missing.
-folders <- folders::get_folders()
+folders <- get_folders()
 result <- create_folders(folders)
 
 # Check to see that the data folder has been created.
-dir.exists(here::here(folders$data))
+dir.exists(here(folders$data))
 ```
 
 ```
@@ -67,7 +67,7 @@ library(datasets)
 data(iris)
 
 # Confirm that the CSV file does not yet exist.
-file_path <- here::here(folders$data, "iris.csv")
+file_path <- here(folders$data, "iris.csv")
 file.exists(file_path)
 ```
 
