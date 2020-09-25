@@ -29,6 +29,7 @@
 #' Sys.setenv(R_CONFIG_NAME = "custom")         # Or set this in the environment.
 #' folders <- get_folders()
 #' }
+#' @export
 get_folders <- function(conf_file = here::here('folders.yml'),
                         conf_name = Sys.getenv('R_CONFIG_NAME'),
                         save_conf = TRUE) {

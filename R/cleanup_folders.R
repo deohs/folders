@@ -17,6 +17,7 @@
 #' result <- create_folders(folders)
 #' result <- cleanup_folders(folders)
 #' }
+#' @export
 cleanup_folders <- function(folders = folders::get_folders(), 
 			    conf_file = here::here('folders.yml'),
 			    keep_conf = TRUE) {

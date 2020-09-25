@@ -31,6 +31,7 @@
 #' write.csv(df, file_path, row.names = FALSE)
 #' file.exists(file_path)
 #' }
+#' @export
 create_folders <- function(folders = folders::get_folders(), 
                            showWarnings = FALSE, recursive = TRUE) {
   sapply(here::here(folders),
