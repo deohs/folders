@@ -21,7 +21,7 @@
 cleanup_folders <- function(folders = folders::get_folders(), 
 			    conf_file = here::here('folders.yml'),
 			    keep_conf = TRUE) {
-  result1 <- sapply(here::here(folders), function(x) {
+  result1 <- sapply(here::here(unlist(folders)), function(x) {
     if (length(dir(x)) == 0) unlink(x, recursive = TRUE) else NULL
   })
 

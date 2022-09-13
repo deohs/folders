@@ -1,3 +1,3 @@
 library(folders)
 
-test_check("folders")
+testthat::test_check("folders")

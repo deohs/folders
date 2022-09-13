@@ -34,7 +34,7 @@
 #' @export
 create_folders <- function(folders = folders::get_folders(), 
                            showWarnings = FALSE, recursive = TRUE) {
-  sapply(here::here(folders),
+  sapply(here::here(unlist(folders)),
          dir.create,
          showWarnings = showWarnings,
          recursive = recursive)
