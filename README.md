@@ -1,3 +1,10 @@
+---
+title: "folders"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
 # folders
 
 This R package supports the use of standardized folder names in R projects. The 
@@ -16,7 +23,8 @@ you write cleaner, more portable, and more reproducible code.
 
 The package defaults provide "code", "data", "doc", "figures" and 
 "results" folders. You can specify alternatives in a YAML configuration file, 
-which this package will read and use instead.
+which this package will read and use instead. See "Configuration file" below 
+for more details.
 
 You will note there is a "code" folder. If your scripts are in the "code" 
 folder, your code will still be able to find the other folders, thanks 
@@ -197,7 +205,25 @@ default:
 
 Once this file has been created, you can edit it to modify the default 
 folder paths. However, we advise you to stick to the defaults to maintain 
-maximum consistency between your projects.
+maximum consistency between your projects. If you do wish to edit it, you can
+do so with any text editor or with R as shown below.
+
+
+```r
+# Load packages, installing as needed.
+if (!require(pacman)) install.packages('pacman', repos = 'https://cloud.r-project.org')
+pacman::p_load(here, yaml)
+pacman::p_load_gh("deohs/folders")
+
+# Get the list of standard folders, creating the configuration file if missing.
+folders <- get_folders()
+
+# Replace a default with a custom folder path.
+folders$data <- "data_folder"
+
+# Edit the default configuration file to save the modification.
+write_yaml(list(default = folders), file = here('folders.yml'))
+```
 
 ## Dependencies
 
