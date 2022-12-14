@@ -222,4 +222,4 @@ for you.
 - [yaml](https://cran.r-project.org/web/packages/yaml/index.html)
 
 You will need to load the *here* package with your scripts to make the most use 
-of the *folders* package, as seen in the example above.
+of the *folders* package, as seen in the Basic Usage examples above.
