@@ -249,7 +249,8 @@ data_folder <- folders$data
 ```
 
 ... so that your script can still be platform independent even though the data
-path is not.
+path is not. If your specified `conf_name` does not exist in the configuration 
+file, then the defaults are used instead. 
 
 ## Dependencies
 
