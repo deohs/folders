@@ -186,9 +186,11 @@ folders$data <- "data_folder"
 write_yaml(list(default = folders), file = here('folders.yml'))
 ```
 
+### Handling platform-dependent paths
+
 You can add other configuration names besides "default". For example, if you
 had a path that would be operating system dependent, you could edit your 
-configuration file this (abbreviated here to show only the data path):
+configuration file like this (abbreviated here to show only the data path):
 
 ```
 default:
