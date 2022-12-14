@@ -186,6 +186,29 @@ folders$data <- "data_folder"
 write_yaml(list(default = folders), file = here('folders.yml'))
 ```
 
+You can add other configuration names besides "default". For example, if you
+had a path that would be operating system dependent, you could edit your 
+configuration file this (abbreviated here to show only the data path):
+
+```
+default:
+  data: data
+windows:
+  data: //server/path/to/data
+unix:
+  data: /path/to/data
+```
+
+And then you can read in the appropriate paths for the system you are using:
+
+```{r}
+folders <- get_folders(conf_name = .Platform$OS.type)
+data_folder <- folders$data
+```
+
+... so that your script can still be platform independent even though the data
+path is not.
+
 ## Dependencies
 
 When you install this package, the following dependencies should be installed 
