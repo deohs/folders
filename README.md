@@ -234,17 +234,19 @@ configuration file like this (abbreviated here to show only the data path):
 ```
 default:
   data: data
-windows:
+Windows:
   data: //server/path/to/data
-unix:
+Linux:
   data: /path/to/data
+Darwin:
+  data: /Volumes/path/to/data
 ```
 
 And then you can read in the appropriate paths for the system you are using:
 
 
 ```r
-folders <- get_folders(conf_name = .Platform$OS.type)
+folders <- get_folders(conf_name = Sys.info()[['sysname']])
 data_folder <- folders$data
 ```
 
