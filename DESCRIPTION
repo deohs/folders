@@ -1,11 +1,8 @@
 Package: folders
-Title: Standardized folders for R projects
-Version: 0.0.3
-Authors@R: 
-    person(given = "Brian",
-           family = "High",
-           role = c("aut", "cre"),
-           email = "bhigh@live.com")
+Title: Standardized Folders for R projects
+Version: 0.0.4
+Author: Brian High <bhigh@live.com>
+Maintainer: Brian High <bhigh@live.com>
 URL: https://github.com/deohs/folders
 BugReports: https://github.com/deohs/folders/issues
 Description: Supports the use of standardized folder names in R projects.
