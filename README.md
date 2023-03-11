@@ -213,7 +213,7 @@ that project phase using the same variables, e.g., `folders$data`,
 `folders$results`, etc.
 
 ```
-df <- read_csv(here(folders$data, "file.csv"))
+df <- read.csv(here(folders$data, "data.csv"))
 ```
 
 ## Configuration file
