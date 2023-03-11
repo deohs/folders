@@ -153,7 +153,7 @@ You can refer to subfolders relative to the paths in your `folders` list using
 `here()`. For example, if you had a folder called "raw" under your data folder, 
 just refer to that folder with `here(folders$data, "raw")`:
 
-```{r, message=FALSE}
+```{r, eval=FALSE}
 raw_df <- here(folders$data, "raw", "file.csv")
 ```
 
@@ -162,7 +162,7 @@ you can use `lapply()` or `purrr::map()` to create that hierarchy. For example,
 we can create a "phase" folder under each folder in `folders` and then a "01" 
 folder under each "phase" folder:
 
-```{r, message=FALSE}
+```{r, eval=FALSE}
 folders <- lapply(get_folders(), here, "phase", "01")
 res <- create_folders(folders) 
 ```
@@ -173,6 +173,10 @@ refer to a path like `data/phase/01` within the parent folder. This way, your
 scripts can always refer to the appropriate data, results, etc., folder for 
 that project phase using the same variables, e.g., `folders$data`, 
 `folders$results`, etc.
+
+```{r, eval=FALSE}
+df <- read.csv(here(folders$data, "file.csv"))
+```
 
 ## Configuration file
 

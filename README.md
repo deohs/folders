@@ -212,6 +212,10 @@ scripts can always refer to the appropriate data, results, etc., folder for
 that project phase using the same variables, e.g., `folders$data`, 
 `folders$results`, etc.
 
+```
+df <- read_csv(here(folders$data, "file.csv"))
+```
+
 ## Configuration file
 
 The configuration file, if not already present, will be written by `get_folders()` 
