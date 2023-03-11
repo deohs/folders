@@ -209,7 +209,8 @@ You can place that near the top of each of your scripts, adjusting for the
 project phase the script is used for, then you can then use `folders$data` to 
 refer to a path like `data/phase/01` within the parent folder. This way, your 
 scripts can always refer to the appropriate data, results, etc., folder for 
-that project phase using the same variable, e.g., `folders$data`.
+that project phase using the same variables, e.g., `folders$data`, 
+`folders$results`, etc.
 
 ## Configuration file
 
