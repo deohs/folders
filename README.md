@@ -75,7 +75,7 @@ Or, if you prefer using [pacman](https://github.com/trinker/pacman):
 
 
 ```r
-if (!require(pacman)) install.packages('pacman', repos = 'https://cloud.r-project.org')
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load_gh("deohs/folders")
 ```
 
@@ -87,7 +87,7 @@ use of standardized folders in your projects.
 
 ```r
 # Load packages, installing as needed.
-if (!require(pacman)) install.packages('pacman', repos = 'https://cloud.r-project.org')
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here)
 pacman::p_load_gh("deohs/folders")
 
@@ -237,7 +237,7 @@ do so with any text editor or with R as shown below.
 
 ```r
 # Load packages, installing as needed.
-if (!require(pacman)) install.packages('pacman', repos = 'https://cloud.r-project.org')
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here, yaml)
 pacman::p_load_gh("deohs/folders")
 
