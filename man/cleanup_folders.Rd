@@ -32,14 +32,8 @@ file will also be removed if keep_conf is set to FALSE.
 }
 
 \examples{
-\dontrun{
 folders <- get_folders()
 result <- create_folders(folders)
 result <- cleanup_folders(folders)
 }
-}
-\keyword{configuration,}
-\keyword{folders,}
-\keyword{portability,}
-\keyword{reproducibility,}
-\keyword{structure}
+\keyword{folder-management}

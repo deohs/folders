@@ -1,8 +1,9 @@
 test_that("cleanup_folders works with defaults", {
-  folders <- get_folders()
-  expect_equal(file.exists(here::here('folders.yml')), TRUE)
+  conf <- tempfile("folders.yml")
+  folders <- get_folders(conf)
+  expect_equal(file.exists(conf), TRUE)
   result <- create_folders(folders)
-  cleanup_result <- cleanup_folders(folders)
+  cleanup_result <- cleanup_folders(folders, conf)
   names(cleanup_result) <- basename(names(cleanup_result))
   cleanup_result_default <- c(
     code = 0,

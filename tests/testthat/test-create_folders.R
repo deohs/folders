@@ -1,6 +1,7 @@
 test_that("create_folders works", {
-  folders <- get_folders()
-  cleanup_result <- cleanup_folders(folders, keep_conf = FALSE)
+  conf <- tempfile("folders.yml")
+  folders <- get_folders(conf_file = conf)
+  cleanup_result <- cleanup_folders(folders, conf, keep_conf = FALSE)
   result <- create_folders(folders)
   names(result) <- basename(names(result))
   result_default <- c(
@@ -10,6 +11,6 @@ test_that("create_folders works", {
     figures = TRUE,
     results = TRUE
   )
-  cleanup_result <- cleanup_folders(folders, keep_conf = FALSE)
+  cleanup_result <- cleanup_folders(folders, conf, keep_conf = FALSE)
   expect_equal(result, result_default)
 })

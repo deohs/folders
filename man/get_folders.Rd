@@ -43,15 +43,9 @@ the section with the "conf_name" parameter.
 }
 
 \examples{
-\dontrun{
 folders <- get_folders()
 folders <- get_folders(conf_name = "custom") # For a custom list from a file.
 Sys.setenv(R_CONFIG_NAME = "custom")         # Or set this in the environment.
 folders <- get_folders()
 }
-}
-\keyword{configuration,}
-\keyword{folders,}
-\keyword{portability,}
-\keyword{reproducibility,}
-\keyword{structure}
+\keyword{folder-management}

@@ -39,7 +39,6 @@ base::dir.exists() as shown in the examples below.
 }
 
 \examples{
-\dontrun{
 folders <- get_folders()
 result <- create_folders(folders)
 
@@ -51,9 +50,4 @@ file_path <- here::here(folders$data, "data.csv")
 write.csv(df, file_path, row.names = FALSE)
 file.exists(file_path)
 }
-}
-\keyword{configuration,}
-\keyword{folders,}
-\keyword{portability,}
-\keyword{reproducibility,}
-\keyword{structure}
+\keyword{folder-management}

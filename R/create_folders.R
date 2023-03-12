@@ -8,7 +8,7 @@
 #' @param recursive (boolean) Support recursive folder creation. 
 #'     See: base::dir.create(). (Default: TRUE)
 #' @return (vector) A named vector for the results of "dir.create" operations. 
-#' @keywords reproducibility, portability, configuration, folders, structure
+#' @keywords folder-management
 #' @section Details:
 #' For each folder in the "folders" list, here::here() and base::dir.create() are 
 #' used to create a subfolder under the parent folder. Warnings are silenced in 
@@ -19,7 +19,6 @@
 #' FALSE value for that folder. You can test the existence of the folders with
 #' base::dir.exists() as shown in the examples below.
 #' @examples
-#' \dontrun{
 #' folders <- get_folders()
 #' result <- create_folders(folders)
 #' 
@@ -30,7 +29,6 @@
 #' file_path <- here::here(folders$data, "data.csv")
 #' write.csv(df, file_path, row.names = FALSE)
 #' file.exists(file_path)
-#' }
 #' @export
 create_folders <- function(folders = folders::get_folders(), 
                            showWarnings = FALSE, recursive = TRUE) {

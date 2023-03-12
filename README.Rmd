@@ -32,7 +32,7 @@ to the *here* package.
 
 ## RStudio Projects
 
-This package is intended to be used with [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). 
+This package is intended to be used with [RStudio Projects](https://support.posit.co/hc/en-us/articles/200526207-Using-Projects). 
 A benefit of using RStudio Projects is, once you open the project in RStudio, 
 you will be placed in the parent folder of your project (aka. "project root"). 
 All of your work in the project will be relative to that location, especially if 
@@ -246,7 +246,8 @@ file, then the defaults are used instead.
 ## Dependencies
 
 When you install this package, the following dependencies should be installed 
-for you: *config*, *here*, *yaml*.
+for you: [config](https://CRAN.R-project.org/package=config), [here](https://CRAN.R-project.org/package=here), 
+[yaml](https://CRAN.R-project.org/package=yaml).
 
 You will need to load the *here* package with your scripts to make the most use 
 of the *folders* package, as seen in the Basic Usage examples above.
