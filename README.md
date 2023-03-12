@@ -192,6 +192,7 @@ You can refer to subfolders relative to the paths in your `folders` list using
 just refer to that folder with `here(folders$data, "raw")`:
 
 ```
+folders <- get_folders()
 raw_df <- here(folders$data, "raw", "file.csv")
 ```
 
