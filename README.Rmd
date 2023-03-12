@@ -28,8 +28,7 @@ for more details.
 
 You will note there is a "code" folder. If your scripts are in the "code" 
 folder, your code will still be able to find the other folders, thanks 
-to the [here](https://cran.r-project.org/web/packages/here/index.html) 
-package.
+to the *here* package.
 
 ## RStudio Projects
 
@@ -46,8 +45,7 @@ will most likely want to clone this repository into an RStudio Project.
 This package will also work outside of RStudio Projects. For example, 
 if you are working in a folder tracked by git, then the top level of the git 
 repository will be identified as the "project root" folder. This behavior is 
-determined by the [here](https://cran.r-project.org/web/packages/here/index.html) 
-package.
+determined by the *here* package.
 
 If you are neither working in an RStudio project, nor in a folder tracked by a 
 version control system (git or Subversion), nor an R package development 
@@ -55,22 +53,21 @@ folder, then the current working directory at the time the `here` package was
 loaded will be treated as the "project root" folder. 
 
 Or you can force a folder to be the "project root" with a `.here` file. You 
-can create one with the `here::set_here()` function. See the 
-[here](https://cran.r-project.org/web/packages/here/index.html) package 
+can create one with the `here::set_here()` function. See the *here* package 
 documentation for more information. However, if your goal is to write more 
 reproducible code and follow best practices, you should really ask yourself why 
 you are not using RStudio Projects or version control.
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/deohs/folders) with:
+You can install the development version from *GitHub* with:
 
 ```{r, eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("deohs/folders")
 ```
 
-Or, if you prefer using [pacman](https://github.com/trinker/pacman):
+Or, if you prefer using *pacman*:
 
 ```{r, eval=TRUE, message=FALSE}
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
@@ -249,11 +246,7 @@ file, then the defaults are used instead.
 ## Dependencies
 
 When you install this package, the following dependencies should be installed 
-for you.
-
-- [config](https://cran.r-project.org/web/packages/config/index.html)
-- [here](https://cran.r-project.org/web/packages/here/index.html)
-- [yaml](https://cran.r-project.org/web/packages/yaml/index.html)
+for you: *config*, *here*, *yaml*.
 
 You will need to load the *here* package with your scripts to make the most use 
 of the *folders* package, as seen in the Basic Usage examples above.
