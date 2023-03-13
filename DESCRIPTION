@@ -6,7 +6,7 @@ Authors@R: c(person("Brian", "High", email = "bhigh@live.com",
   person("University of Washington", role = c("cph", "fnd")))
 URL: https://github.com/deohs/folders
 BugReports: https://github.com/deohs/folders/issues
-Description: Supports the use of standardized folder names in R projects.
+Description: Supports the use of standardized folder names.
 Depends: R (>= 3.6)
 License: MIT + file LICENSE
 Encoding: UTF-8
