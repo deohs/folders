@@ -2,14 +2,14 @@
 #'
 #' Return a named list of standard folder names. Save a config file if missing.
 #' @param conf_file (character) Configuration file to read/write.
-#'     See: config::get(). (Default: here::here("folders.yml"))
+#'     See: config::get().
 #' @param conf_name (character) Name of configuration to read.
 #'     See: config::get(). (Default: Sys.getenv("R_CONFIG_NAME"))
 #' @param save_conf (boolean) Whether or not to save new configuration file.
 #'     (Default: TRUE)
 #' @return (list) The named folders for a standard file structure, will be
 #'     returned as a list.
-#' @keywords folder-management
+#' @keywords organization, consistency
 #' @section Details:
 #' The list of folders can be used to create any which are missing or to
 #' refer to a folder path by name to avoid hardcoding paths in scripts.
@@ -29,8 +29,7 @@
 #' Sys.setenv(R_CONFIG_NAME = "custom")
 #' folders <- get_folders(conf)
 #' @export
-get_folders <- function(conf_file,
-                        conf_name = Sys.getenv('R_CONFIG_NAME'),
+get_folders <- function(conf_file, conf_name = Sys.getenv('R_CONFIG_NAME'),
                         save_conf = TRUE) {
   if(file.exists(conf_file)) {
     conf_name <- ifelse(conf_name == '', 'default', conf_name)

@@ -12,7 +12,7 @@ get_folders(
 }
 \arguments{
 \item{conf_file}{(character) Configuration file to read/write.
-See: config::get(). (Default: here::here("folders.yml"))}
+See: config::get().}
 
 \item{conf_name}{(character) Name of configuration to read.
 See: config::get(). (Default: Sys.getenv("R_CONFIG_NAME"))}
@@ -49,4 +49,5 @@ folders <- get_folders(conf, conf_name = "custom")
 Sys.setenv(R_CONFIG_NAME = "custom")
 folders <- get_folders(conf)
 }
-\keyword{folder-management}
+\keyword{consistency}
+\keyword{organization,}

@@ -7,8 +7,7 @@
 create_folders(folders, showWarnings = FALSE, recursive = TRUE)
 }
 \arguments{
-\item{folders}{(list) A named list of standard folders for an R project. 
-(Default: folders::get_folders())}
+\item{folders}{(list) A named list of standard folders for an R project.}
 
 \item{showWarnings}{(boolean) Show warnings. See: base::dir.create().
 (Default: FALSE)}
@@ -35,16 +34,18 @@ base::dir.exists() as shown in the examples below.
 }
 
 \examples{
-conf <- here::here('folders.yml')
+conf <- tempfile("folders.yml")
 folders <- get_folders(conf)
+folders <- lapply(folders, function(x) file.path(tempdir(), x))
 result <- create_folders(folders)
 
-dir.exists(here::here(folders$data))
-sapply(here::here(folders), dir.exists)
+dir.exists(conf)
+sapply(folders, dir.exists)
 
 df <- data.frame(x = letters[1:3], y = 1:3)
-file_path <- here::here(folders$data, "data.csv")
+file_path <- file.path(folders$data, "data.csv")
 write.csv(df, file_path, row.names = FALSE)
 file.exists(file_path)
 }
-\keyword{folder-management}
+\keyword{consistency}
+\keyword{organization,}

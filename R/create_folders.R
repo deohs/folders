@@ -1,14 +1,13 @@
 #' Create Folders
 #'
 #' Create a standardized set of folders under a parent folder of an R project.
-#' @param folders (list) A named list of standard folders for an R project. 
-#'     (Default: folders::get_folders())
+#' @param folders (list) A named list of standard folders for an R project.
 #' @param showWarnings (boolean) Show warnings. See: base::dir.create().
 #'     (Default: FALSE)
 #' @param recursive (boolean) Support recursive folder creation. 
 #'     See: base::dir.create(). (Default: TRUE)
 #' @return (vector) A named vector for the results of "dir.create" operations. 
-#' @keywords folder-management
+#' @keywords organization, consistency
 #' @section Details:
 #' For each folder in the "folders" list, here::here() and base::dir.create() are 
 #' used to create a subfolder under the parent folder. Warnings are silenced in 
@@ -19,20 +18,20 @@
 #' FALSE value for that folder. You can test the existence of the folders with
 #' base::dir.exists() as shown in the examples below.
 #' @examples
-#' conf <- here::here('folders.yml')
+#' conf <- tempfile("folders.yml")
 #' folders <- get_folders(conf)
+#' folders <- lapply(folders, function(x) file.path(tempdir(), x))
 #' result <- create_folders(folders)
 #' 
-#' dir.exists(here::here(folders$data))
-#' sapply(here::here(folders), dir.exists)
+#' dir.exists(conf)
+#' sapply(folders, dir.exists)
 #' 
 #' df <- data.frame(x = letters[1:3], y = 1:3)
-#' file_path <- here::here(folders$data, "data.csv")
+#' file_path <- file.path(folders$data, "data.csv")
 #' write.csv(df, file_path, row.names = FALSE)
 #' file.exists(file_path)
 #' @export
-create_folders <- function(folders, 
-                           showWarnings = FALSE, recursive = TRUE) {
+create_folders <- function(folders, showWarnings = FALSE, recursive = TRUE) {
   sapply(here::here(unlist(folders)),
          dir.create,
          showWarnings = showWarnings,

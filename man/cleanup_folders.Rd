@@ -4,20 +4,16 @@
 \alias{cleanup_folders}
 \title{Cleanup Folders}
 \usage{
-cleanup_folders(
-  folders,
-  conf_file = here::here("folders.yml"),
-  keep_conf = TRUE
-)
+cleanup_folders(folders, conf_file, keep_conf = TRUE)
 }
 \arguments{
 \item{folders}{(list) A named list of standard folders for an R project.
 (Default: folders::get_folders())}
 
-\item{conf_file}{(character) Configuration file to read/write.
-See: config::get(). (Default: here::here("folders.yml"))}
+\item{conf_file}{(character) Configuration file to read/write. 
+See: config::get().}
 
-\item{keep_conf}{(boolean) Keep the "folders.yml" file if TRUE. (Default: TRUE)}
+\item{keep_conf}{(boolean) Keep the configuration file if TRUE. (Default: TRUE)}
 }
 \value{
 (integer) A vector of results: 0 for success; 1 for failure; NULL for skipped.
@@ -32,9 +28,11 @@ file will also be removed if keep_conf is set to FALSE.
 }
 
 \examples{
-conf <- here::here('folders.yml')
+conf <- tempfile("folders.yml")
 folders <- get_folders(conf)
+folders <- lapply(folders, function(x) file.path(tempdir(), x))
 result <- create_folders(folders)
 result <- cleanup_folders(folders, conf)
 }
-\keyword{folder-management}
+\keyword{consistency}
+\keyword{organization,}
