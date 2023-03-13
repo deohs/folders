@@ -9,7 +9,7 @@
 #'     (Default: TRUE)
 #' @return (list) The named folders for a standard file structure, will be
 #'     returned as a list.
-#' @keywords structure, consistency
+#' @keywords consistency
 #' @section Details:
 #' The list of folders can be used to create any which are missing or to
 #' refer to a folder path by name to avoid hardcoding paths in scripts.

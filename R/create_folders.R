@@ -7,7 +7,7 @@
 #' @param recursive (boolean) Support recursive folder creation. 
 #'     See: base::dir.create(). (Default: TRUE)
 #' @return (vector) A named vector for the results of "dir.create" operations. 
-#' @keywords structure, consistency
+#' @keywords consistency
 #' @section Details:
 #' For each folder in the "folders" list, here::here() and base::dir.create() are 
 #' used to create a subfolder under the parent folder. Warnings are silenced in 
