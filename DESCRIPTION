@@ -1,19 +1,20 @@
 Package: folders
 Title: Standardized Folders for R Projects
 Version: 0.0.6
-Author: Brian High <bhigh@live.com>
-Maintainer: Brian High <bhigh@live.com>
+Authors@R: c(person("Brian", "High", email = "bhigh@live.com",
+    role = c("aut", "cre")), 
+  person("University of Washington", role = c("cph", "fnd")))
 URL: https://github.com/deohs/folders
 BugReports: https://github.com/deohs/folders/issues
 Description: Supports the use of standardized folder names in R projects.
 Depends: R (>= 3.6)
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-Imports:
-    config (>= 0.3),
-    here (>= 0.1),
-    yaml (>= 2.2.1)
+Imports: config (>= 0.3), here (>= 0.1), yaml (>= 2.2.1)
 RoxygenNote: 7.2.3
-Suggests:
-    testthat (>= 2.3.2)
+Suggests: testthat (>= 2.3.2)
+NeedsCompilation: no
+Packaged: 2023-03-13 16:25:36 UTC; high
+Author: Brian High [aut, cre],
+  University of Washington [cph, fnd]
+Maintainer: Brian High <bhigh@live.com>
