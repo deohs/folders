@@ -12,11 +12,12 @@
 #' Each non-empty folder in the list of folders will be removed. The configuration  
 #' file will also be removed if keep_conf is set to FALSE.
 #' @examples
-#' folders <- get_folders()
+#' conf <- here::here('folders.yml')
+#' folders <- get_folders(conf)
 #' result <- create_folders(folders)
-#' result <- cleanup_folders(folders)
+#' result <- cleanup_folders(folders, conf)
 #' @export
-cleanup_folders <- function(folders = folders::get_folders(), 
+cleanup_folders <- function(folders, 
 			    conf_file = here::here('folders.yml'),
 			    keep_conf = TRUE) {
   result1 <- sapply(here::here(unlist(folders)), function(x) {

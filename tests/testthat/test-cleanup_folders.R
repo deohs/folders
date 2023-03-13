@@ -13,15 +13,17 @@ test_that("cleanup_folders works with defaults", {
     results = 0
   )
   expect_equal(cleanup_result, cleanup_result_default)
-  expect_equal(file.exists(here::here('folders.yml')), TRUE)
-  expect_equal(unlink(here::here('folders.yml')), 0)
+  expect_equal(file.exists(conf), TRUE)
+  expect_equal(unlink(conf), 0)
 })
 
 test_that("cleanup_folders works with configuration file removal", {
-  folders <- get_folders()
-  expect_equal(file.exists(here::here('folders.yml')), TRUE)
+  conf <- tempfile("folders.yml")
+  folders <- get_folders(conf)
+  folders <- lapply(folders, function(x) file.path(tempdir(), x))
+  expect_equal(file.exists(conf), TRUE)
   result <- create_folders(folders)
-  cleanup_result <- cleanup_folders(folders, keep_conf = FALSE)
+  cleanup_result <- cleanup_folders(folders, conf, keep_conf = FALSE)
   names(cleanup_result) <- basename(names(cleanup_result))
   cleanup_result_default <- c(
     code = 0,
@@ -32,15 +34,17 @@ test_that("cleanup_folders works with configuration file removal", {
     conf_file = 0
   )
   expect_equal(cleanup_result, cleanup_result_default)
-  expect_equal(file.exists(here::here('folders.yml')), FALSE)
+  expect_equal(file.exists(conf), FALSE)
 })
 
 test_that("cleanup_folders works with non-empty folders", {
-  folders <- get_folders()
+  conf <- tempfile("folders.yml")
+  folders <- get_folders(conf)
+  folders <- lapply(folders, function(x) file.path(tempdir(), x))
   result <- create_folders(folders)
-  file_path <- here::here(folders$data, 'data.csv')
+  file_path <- file.path(folders$data, 'data.csv')
   write.csv(data.frame(x = 1:3), file_path)
-  cleanup_result <- cleanup_folders(folders)
+  cleanup_result <- cleanup_folders(folders, conf)
   names(cleanup_result) <- basename(names(cleanup_result))
   cleanup_result_default <- list(
     code = 0,
@@ -50,12 +54,12 @@ test_that("cleanup_folders works with non-empty folders", {
     results = 0
   )
   expect_equal(cleanup_result, cleanup_result_default)
-  expect_equal(file.exists(here::here('folders.yml')), TRUE)
+  expect_equal(file.exists(conf), TRUE)
   expect_equal(file.exists(file_path), TRUE)
-  unlink(here::here('folders.yml'))
+  unlink(conf)
   unlink(file_path)
-  unlink(here::here(folders$data), recursive = TRUE)
-  expect_equal(file.exists(here::here('folders.yml')), FALSE)
-  expect_equal(dir.exists(here::here(folders$data)), FALSE)
+  unlink(file.path(folders$data), recursive = TRUE)
+  expect_equal(file.exists(conf), FALSE)
+  expect_equal(dir.exists(file.path(folders$data)), FALSE)
   expect_equal(file.exists(file_path), FALSE)
 })

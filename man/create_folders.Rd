@@ -4,11 +4,7 @@
 \alias{create_folders}
 \title{Create Folders}
 \usage{
-create_folders(
-  folders = folders::get_folders(),
-  showWarnings = FALSE,
-  recursive = TRUE
-)
+create_folders(folders, showWarnings = FALSE, recursive = TRUE)
 }
 \arguments{
 \item{folders}{(list) A named list of standard folders for an R project. 
@@ -39,7 +35,8 @@ base::dir.exists() as shown in the examples below.
 }
 
 \examples{
-folders <- get_folders()
+conf <- here::here('folders.yml')
+folders <- get_folders(conf)
 result <- create_folders(folders)
 
 dir.exists(here::here(folders$data))

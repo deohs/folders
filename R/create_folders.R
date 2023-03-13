@@ -19,7 +19,8 @@
 #' FALSE value for that folder. You can test the existence of the folders with
 #' base::dir.exists() as shown in the examples below.
 #' @examples
-#' folders <- get_folders()
+#' conf <- here::here('folders.yml')
+#' folders <- get_folders(conf)
 #' result <- create_folders(folders)
 #' 
 #' dir.exists(here::here(folders$data))
@@ -30,7 +31,7 @@
 #' write.csv(df, file_path, row.names = FALSE)
 #' file.exists(file_path)
 #' @export
-create_folders <- function(folders = folders::get_folders(), 
+create_folders <- function(folders, 
                            showWarnings = FALSE, recursive = TRUE) {
   sapply(here::here(unlist(folders)),
          dir.create,

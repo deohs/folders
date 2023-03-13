@@ -5,7 +5,7 @@
 \title{Get Folders}
 \usage{
 get_folders(
-  conf_file = here::here("folders.yml"),
+  conf_file,
   conf_name = Sys.getenv("R_CONFIG_NAME"),
   save_conf = TRUE
 )
@@ -43,9 +43,10 @@ the section with the "conf_name" parameter.
 }
 
 \examples{
-folders <- get_folders()
-folders <- get_folders(conf_name = "custom") # For a custom list from a file.
-Sys.setenv(R_CONFIG_NAME = "custom")         # Or set this in the environment.
-folders <- get_folders()
+conf <- here::here('folders.yml')
+folders <- get_folders(conf)
+folders <- get_folders(conf, conf_name = "custom")
+Sys.setenv(R_CONFIG_NAME = "custom")
+folders <- get_folders(conf)
 }
 \keyword{folder-management}

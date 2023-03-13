@@ -5,7 +5,7 @@
 \title{Cleanup Folders}
 \usage{
 cleanup_folders(
-  folders = folders::get_folders(),
+  folders,
   conf_file = here::here("folders.yml"),
   keep_conf = TRUE
 )
@@ -32,8 +32,9 @@ file will also be removed if keep_conf is set to FALSE.
 }
 
 \examples{
-folders <- get_folders()
+conf <- here::here('folders.yml')
+folders <- get_folders(conf)
 result <- create_folders(folders)
-result <- cleanup_folders(folders)
+result <- cleanup_folders(folders, conf)
 }
 \keyword{folder-management}
