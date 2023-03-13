@@ -1,6 +1,6 @@
 Package: folders
 Title: Standardized Folders for R Projects
-Version: 0.0.5
+Version: 0.0.6
 Author: Brian High <bhigh@live.com>
 Maintainer: Brian High <bhigh@live.com>
 URL: https://github.com/deohs/folders

@@ -43,7 +43,7 @@ the section with the "conf_name" parameter.
 }
 
 \examples{
-conf <- here::here('folders.yml')
+conf <- tempfile("folders.yml")
 folders <- get_folders(conf)
 folders <- get_folders(conf, conf_name = "custom")
 Sys.setenv(R_CONFIG_NAME = "custom")
