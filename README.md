@@ -90,7 +90,7 @@ pacman::p_load(here)
 pacman::p_load_gh("deohs/folders")
 
 # Get the list of standard folders and create any folders which are missing
-conf_file <- here('folders.yml')
+conf_file <- here('conf', 'folders.yml')
 folders <- get_folders(conf_file)
 result <- create_folders(folders)
 ```
