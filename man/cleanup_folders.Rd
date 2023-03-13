@@ -35,4 +35,4 @@ result <- create_folders(folders)
 result <- cleanup_folders(folders, conf)
 }
 \keyword{consistency}
-\keyword{organization,}
+\keyword{structure,}

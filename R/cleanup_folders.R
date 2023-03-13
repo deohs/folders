@@ -7,7 +7,7 @@
 #'     See: config::get().
 #' @param keep_conf (boolean) Keep the configuration file if TRUE. (Default: TRUE)
 #' @return (integer) A vector of results: 0 for success; 1 for failure; NULL for skipped.
-#' @keywords organization, consistency
+#' @keywords structure, consistency
 #' @section Details:
 #' Each non-empty folder in the list of folders will be removed. The configuration  
 #' file will also be removed if keep_conf is set to FALSE.

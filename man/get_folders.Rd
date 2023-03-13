@@ -50,4 +50,4 @@ Sys.setenv(R_CONFIG_NAME = "custom")
 folders <- get_folders(conf)
 }
 \keyword{consistency}
-\keyword{organization,}
+\keyword{structure,}
