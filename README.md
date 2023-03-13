@@ -304,3 +304,7 @@ for you: [config](https://CRAN.R-project.org/package=config), [here](https://CRA
 
 You will need to load the *here* package with your scripts to make the most use 
 of the *folders* package, as seen in the Basic Usage examples above.
+
+
+
+

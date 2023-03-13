@@ -272,11 +272,13 @@ if(file.exists(conf)) unlink(conf, recursive = TRUE)
 ```{r build_notes, include=FALSE, eval=FALSE}
 # 1. After rendering this Rmd to HTML, remove the html file, since all we want 
 #    is the MD file. Then edit the MD file and remove the "r" after "```" with 
-#    a search-and-replace.
+#    a search-and-replace. These Bash commands will accomplish these steps:
+#      rm -f README.html
+#      perl -pi -e 's/```r/```/g' README.md
 # 2. Make sure you have "R_BUILD_TAR=tar" in your ~/.Renviron.
 # 3. Make sure you have "tidy", "pandoc", and a LaTeX environment installed.
 # 4. In Terminal, go to the parent folder of "folders" and run these commands:
-#    R CMD build folders
-#    R CMD check --as-cran folders_X.Y.Z.tar.gz
+#      R CMD build folders
+#      R CMD check --as-cran folders_X.Y.Z.tar.gz
 #    ... where X.Y.Z is the version number in DESCRIPTION.
 ```
