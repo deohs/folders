@@ -12,18 +12,18 @@
 #' Each non-empty folder in the list of folders will be removed. The configuration  
 #' file will also be removed if keep_conf is set to FALSE.
 #' @examples
-#' conf <- tempfile("folders.yml")
-#' folders <- get_folders(conf)
+#' conf_file <- tempfile("folders.yml")
+#' folders <- get_folders(conf_file)
 #' folders <- lapply(folders, function(x) file.path(tempdir(), x))
 #' result <- create_folders(folders)
-#' result <- cleanup_folders(folders, conf)
+#' result <- cleanup_folders(folders, conf_file)
 #' @export
 cleanup_folders <- function(folders, conf_file, keep_conf = TRUE) {
-  result1 <- sapply(here::here(unlist(folders)), function(x) {
+  result1 <- if (keep_conf == FALSE) unlink(conf_file) else NULL
+  
+  result2 <- sapply(here::here(unlist(folders)), function(x) {
     if (length(dir(x)) == 0) unlink(x, recursive = TRUE) else NULL
   })
 
-  result2 <- if (keep_conf == FALSE) unlink(conf_file) else NULL
-
-  return(c(result1, conf_file = result2))
+  return(c(result2, conf_file = result1))
 }

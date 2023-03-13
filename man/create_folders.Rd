@@ -34,12 +34,12 @@ base::dir.exists() as shown in the examples below.
 }
 
 \examples{
-conf <- tempfile("folders.yml")
-folders <- get_folders(conf)
+conf_file <- tempfile("folders.yml")
+folders <- get_folders(conf_file)
 folders <- lapply(folders, function(x) file.path(tempdir(), x))
 result <- create_folders(folders)
 
-dir.exists(conf)
+dir.exists(conf_file)
 sapply(folders, dir.exists)
 
 df <- data.frame(x = letters[1:3], y = 1:3)

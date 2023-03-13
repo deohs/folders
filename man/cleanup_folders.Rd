@@ -28,10 +28,10 @@ file will also be removed if keep_conf is set to FALSE.
 }
 
 \examples{
-conf <- tempfile("folders.yml")
-folders <- get_folders(conf)
+conf_file <- tempfile("folders.yml")
+folders <- get_folders(conf_file)
 folders <- lapply(folders, function(x) file.path(tempdir(), x))
 result <- create_folders(folders)
-result <- cleanup_folders(folders, conf)
+result <- cleanup_folders(folders, conf_file)
 }
 \keyword{consistency}

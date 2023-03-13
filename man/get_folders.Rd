@@ -43,10 +43,10 @@ the section with the "conf_name" parameter.
 }
 
 \examples{
-conf <- tempfile("folders.yml")
-folders <- get_folders(conf)
-folders <- get_folders(conf, conf_name = "custom")
+conf_file <- tempfile("folders.yml")
+folders <- get_folders(conf_file)
+folders <- get_folders(conf_file, conf_name = "custom")
 Sys.setenv(R_CONFIG_NAME = "custom")
-folders <- get_folders(conf)
+folders <- get_folders(conf_file)
 }
 \keyword{consistency}

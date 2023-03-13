@@ -90,8 +90,8 @@ pacman::p_load(here)
 pacman::p_load_gh("deohs/folders")
 
 # Get the list of standard folders and create any folders which are missing
-conf <- here::here('folders.yml')
-folders <- get_folders(conf)
+conf_file <- here('folders.yml')
+folders <- get_folders(conf_file)
 result <- create_folders(folders)
 ```
 
@@ -127,8 +127,8 @@ pacman::p_load(here)
 pacman::p_load_gh("deohs/folders")
 
 # Get the list of standard folders and create any folders which are missing
-conf <- here::here('folders.yml')
-folders <- get_folders(conf)
+conf_file <- here('conf', 'folders.yml')
+folders <- get_folders(conf_file)
 result <- create_folders(folders)
 
 # Check to see that the data folder has been created
@@ -166,7 +166,7 @@ file.exists(file_path)
 
 ```r
 # Cleanup unused (empty) folders (Optional, as you may prefer to keep them)
-result <- cleanup_folders(folders, conf)
+result <- cleanup_folders(folders, conf_file)
 
 # Verify that the data folder and CSV file still exist after cleanup
 file.exists(file_path)
@@ -178,7 +178,7 @@ file.exists(file_path)
 
 ```r
 # Verify that the configuration file still exists after cleanup
-file.exists(conf)
+file.exists(conf_file)
 ```
 
 ```
@@ -193,8 +193,8 @@ just refer to that folder with `here(folders$data, "raw")`:
 
 
 ```r
-conf <- here::here('folders.yml')
-folders <- get_folders(conf)
+conf_file <- here('conf', 'folders.yml')
+folders <- get_folders(conf_file)
 raw_df <- here(folders$data, "raw", "file.csv")
 ```
 
@@ -205,8 +205,8 @@ folder under each "phase" folder:
 
 
 ```r
-conf <- here::here('folders.yml')
-folders <- lapply(get_folders(conf), here, "phase", "01")
+conf_file <- here('conf', 'folders.yml')
+folders <- lapply(get_folders(conf_file), here, "phase", "01")
 res <- create_folders(folders) 
 ```
 
@@ -226,17 +226,17 @@ df <- read.csv(here(folders$data, "data.csv"))
 
 The configuration file, if not already present, will be written by `get_folders()` 
 to a YAML file with a path and filename that you provide. Usually this would be 
-something like `folders.yml`, as in the examples above, and usually you will 
-want this file stored in the parent folder of your R project, or perhaps a 
-"conf" subfolder. This file will be read by `config::get()` on subsequent 
-executions of `get_folders()`. This behavior can be modified by function 
-parameters.
+named something like `folders.yml`, as in the examples above, and usually you will 
+want this file stored in either the parent folder or the "conf" subfolder of your 
+R project. This file will be read by `config::get()` on subsequent executions of 
+`get_folders()`. This behavior can be modified by function parameters.
 
 The default configuration file looks like:
 
 ```
 default:
   code: code
+  conf: conf
   data: data
   doc: doc
   figures: figures
@@ -256,14 +256,14 @@ pacman::p_load(here, yaml)
 pacman::p_load_gh("deohs/folders")
 
 # Get the list of standard folders, creating the configuration file if missing
-conf <- here::here('folders.yml')
-folders <- get_folders(conf)
+conf_file <- here('conf', 'folders.yml')
+folders <- get_folders(conf_file)
 
 # Replace a default with a custom folder path
 folders$data <- "data_folder"
 
 # Edit the default configuration file to save the modification
-write_yaml(list(default = folders), file = conf)
+write_yaml(list(default = folders), file = conf_file)
 ```
 
 ### Handling platform-dependent paths
@@ -287,8 +287,8 @@ And then you can read in the appropriate paths for the system you are using:
 
 
 ```r
-conf <- here::here('folders.yml')
-folders <- get_folders(conf, conf_name = Sys.info()[['sysname']])
+conf_file <- here('conf', 'folders.yml')
+folders <- get_folders(conf_file, conf_name = Sys.info()[['sysname']])
 data_folder <- folders$data
 ```
 
