@@ -207,7 +207,7 @@ folder paths. However, we advise you to stick to the defaults to maintain
 maximum consistency between your projects. If you do wish to edit it, you can
 do so with any text editor or with R as shown below.
 
-```{r, message=FALSE}
+```{r, eval=FALSE}
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here, yaml)
@@ -243,7 +243,7 @@ Darwin:
 
 And then you can read in the appropriate paths for the system you are using:
 
-```{r}
+```{r, eval=FALSE}
 conf <- here::here('folders.yml')
 folders <- get_folders(conf, conf_name = Sys.info()[['sysname']])
 data_folder <- folders$data
@@ -261,3 +261,10 @@ for you: [config](https://CRAN.R-project.org/package=config), [here](https://CRA
 
 You will need to load the *here* package with your scripts to make the most use 
 of the *folders* package, as seen in the Basic Usage examples above.
+
+```{r cleanup, include=FALSE}
+data_file <- here(folders$data, "data.csv")
+if(file.exists(data_file)) unlink(data_file, recursive = TRUE)
+result <- cleanup_folders(folders, conf)
+if(file.exists(conf)) unlink(conf, recursive = TRUE)
+```
