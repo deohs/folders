@@ -32,7 +32,8 @@ to the *here* package.
 
 ## RStudio Projects
 
-This package is intended to be used with [RStudio Projects](https://support.posit.co/hc/en-us/articles/200526207-Using-Projects). 
+This package is intended to be used with RStudio Projects. 
+
 A benefit of using RStudio Projects is, once you open the project in RStudio, 
 you will be placed in the parent folder of your project (aka. "project root"). 
 All of your work in the project will be relative to that location, especially if 
