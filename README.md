@@ -64,7 +64,7 @@ you are not using RStudio Projects or version control.
 You can install the development version from *GitHub* with:
 
 
-```
+```r
 # install.packages("devtools")
 devtools::install_github("deohs/folders")
 ```
@@ -72,7 +72,7 @@ devtools::install_github("deohs/folders")
 Or, if you prefer using *pacman*:
 
 
-```
+```r
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load_gh("deohs/folders")
 ```
@@ -83,7 +83,7 @@ The following code chunk can be used at the beginning of your scripts to make
 use of standardized folders in your projects.
 
 
-```
+```r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here)
@@ -98,7 +98,7 @@ result <- create_folders(folders)
 Then, later in your scripts, you can refer to folders like this:
 
 
-```
+```r
 dir.exists(here(folders$data))
 ```
 
@@ -109,7 +109,7 @@ dir.exists(here(folders$data))
 Or you can add to the standard folder paths like this: 
 
 
-```
+```r
 file_path <- here(folders$data, "data.csv")
 ```
 
@@ -120,7 +120,7 @@ a data file to the `folders$data` folder. You will see that there are no
 hardcoded paths for files or folders and no use of `setwd()`.
 
 
-```
+```r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here)
@@ -139,7 +139,7 @@ dir.exists(here(folders$data))
 ## [1] TRUE
 ```
 
-```
+```r
 # Create a dataset to use for writing a CSV file to the data folder
 df <- data.frame(x = letters[1:3], y = 1:3)
 
@@ -152,7 +152,7 @@ file.exists(file_path)
 ## [1] FALSE
 ```
 
-```
+```r
 # Write the CSV file
 write.csv(df, file_path, row.names = FALSE)
 
@@ -164,7 +164,7 @@ file.exists(file_path)
 ## [1] TRUE
 ```
 
-```
+```r
 # Cleanup unused (empty) folders (Optional, as you may prefer to keep them)
 result <- cleanup_folders(folders, conf)
 
@@ -176,7 +176,7 @@ file.exists(file_path)
 ## [1] TRUE
 ```
 
-```
+```r
 # Verify that the configuration file still exists after cleanup
 file.exists(conf)
 ```
@@ -192,7 +192,7 @@ You can refer to subfolders relative to the paths in your `folders` list using
 just refer to that folder with `here(folders$data, "raw")`:
 
 
-```
+```r
 conf <- here::here('folders.yml')
 folders <- get_folders(conf)
 raw_df <- here(folders$data, "raw", "file.csv")
@@ -204,7 +204,7 @@ we can create a "phase" folder under each folder in `folders` and then a "01"
 folder under each "phase" folder:
 
 
-```
+```r
 conf <- here::here('folders.yml')
 folders <- lapply(get_folders(conf), here, "phase", "01")
 res <- create_folders(folders) 
@@ -218,7 +218,7 @@ that project phase using the same variables, e.g., `folders$data`,
 `folders$results`, etc.
 
 
-```
+```r
 df <- read.csv(here(folders$data, "data.csv"))
 ```
 
@@ -249,7 +249,7 @@ maximum consistency between your projects. If you do wish to edit it, you can
 do so with any text editor or with R as shown below.
 
 
-```
+```r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here, yaml)
@@ -286,7 +286,7 @@ Darwin:
 And then you can read in the appropriate paths for the system you are using:
 
 
-```
+```r
 conf <- here::here('folders.yml')
 folders <- get_folders(conf, conf_name = Sys.info()[['sysname']])
 data_folder <- folders$data
