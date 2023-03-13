@@ -228,9 +228,9 @@ The configuration file, if not already present, will be written by `get_folders(
 to a YAML file with a path and filename that you provide. Usually this would be 
 something like `folders.yml`, as in the examples above, and usually you will 
 want this file stored in the parent folder of your R project, or perhaps a 
-"conf" subfolder perhaps. This file will be read by `config::get()` on 
-subsequent executions of `get_folders()`. This behavior can be modified by 
-function parameters.
+"conf" subfolder. This file will be read by `config::get()` on subsequent 
+executions of `get_folders()`. This behavior can be modified by function 
+parameters.
 
 The default configuration file looks like:
 
