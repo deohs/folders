@@ -14,7 +14,7 @@ See: config::get(). (Default: NULL)}
 
 \item{keep_conf}{(boolean) Keep the configuration file if TRUE. (Default: TRUE)}
 
-\item{recursive}{(boolean) Cleanup subfolders recursively if TRUE. (Default: TRUE)}
+\item{recursive}{(boolean) Cleanup subfolders recursively if TRUE. (Default: FALSE)}
 }
 \value{
 (integer) A vector of results: 0 for success; 1 for failure; NULL for skipped.
@@ -25,7 +25,7 @@ Remove empty folders from the folders list as well as the configuration file.
 \section{Details}{
 
 Each empty folder in the list of folders will be removed. If recursive is
-set to FALSE, then empty subfolders will not be removed. The configuration  
+set to TRUE, then empty subfolders will be removed first. The configuration  
 file will be removed if keep_conf is set to FALSE.
 }
 

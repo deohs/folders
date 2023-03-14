@@ -5,12 +5,12 @@
 #' @param conf_file (character) Configuration file to read/write. 
 #'     See: config::get(). (Default: NULL)
 #' @param keep_conf (boolean) Keep the configuration file if TRUE. (Default: TRUE)
-#' @param recursive (boolean) Cleanup subfolders recursively if TRUE. (Default: TRUE)
+#' @param recursive (boolean) Cleanup subfolders recursively if TRUE. (Default: FALSE)
 #' @return (integer) A vector of results: 0 for success; 1 for failure; NULL for skipped.
 #' @keywords consistency
 #' @section Details:
 #' Each empty folder in the list of folders will be removed. If recursive is
-#' set to FALSE, then empty subfolders will not be removed. The configuration  
+#' set to TRUE, then empty subfolders will be removed first. The configuration  
 #' file will be removed if keep_conf is set to FALSE.
 #' @examples
 #' conf_file <- tempfile("folders.yml")
