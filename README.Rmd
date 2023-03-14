@@ -21,7 +21,7 @@ you write cleaner, more portable, and more reproducible code.
 
 ## Default Folders
 
-The package defaults provide "code", "data", "doc", "figures" and 
+The package defaults provide "code", "conf", "data", "doc", "figures" and 
 "results" folders. You can specify alternatives in a YAML configuration file, 
 which this package will read and use instead. See "Configuration file" below 
 for more details.
