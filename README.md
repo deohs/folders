@@ -281,7 +281,16 @@ the end of your script:
 ```r
 # Cleanup empty folders recursively
 dir_lst <- sort(list.dirs(unlist(lapply(folders, here))), decreasing = TRUE)
-res <- sapply(dir_lst, cleanup_folders, conf_file = conf_file)
+result <- sapply(dir_lst, cleanup_folders, conf_file = conf_file)
+```
+
+Or, if you are using the latest development version of the package from GitHub,
+then it's as simple as:
+
+
+```r
+# Cleanup empty folders recursively (using development version of package)
+result <- cleanup_folders(folders, conf_file, recursive = TRUE)
 ```
 
 ## Configuration file

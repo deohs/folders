@@ -1,6 +1,6 @@
 Package: folders
 Title: Standardized Folder Names
-Version: 0.0.9
+Version: 0.1.0
 Authors@R: c(person("Brian", "High", email = "bhigh@live.com",
     role = c("aut", "cre")), 
   person("University of Washington", role = c("cph", "fnd")))

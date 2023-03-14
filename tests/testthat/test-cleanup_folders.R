@@ -104,3 +104,39 @@ test_that("cleanup_folders works with non-empty folders", {
   expect_equal(file.exists(file_path), FALSE)
 })
 
+test_that("cleanup_folders works recursively with non-empty folders", {
+  conf_file <- tempfile("folders.yml")
+  folders <- get_folders(conf_file)
+  folders <- lapply(folders, function(x) file.path(tempdir(), x))
+  result <- create_folders(lapply(folders, file.path, 'test'))
+  file_path <- file.path(folders$data, 'test', 'data.csv')
+  write.csv(data.frame(x = 1:3), file_path)
+  cleanup_result <- cleanup_folders(folders, conf_file, recursive = TRUE)
+  names(cleanup_result) <- gsub(paste0(tempdir(), '/'), '', 
+                                names(cleanup_result))
+  cleanup_result_default <-
+    list(
+      `results/test` = 0,
+      results = 0,
+      `figures/test` = 0,
+      figures = 0,
+      `doc/test` = 0,
+      doc = 0,
+      `data/test` = NULL,
+      data = NULL,
+      `conf/test` = 0,
+      conf = 0,
+      `code/test` = 0,
+      code = 0
+    )
+  expect_equal(cleanup_result, cleanup_result_default)
+  expect_equal(file.exists(conf_file), TRUE)
+  expect_equal(file.exists(file_path), TRUE)
+  unlink(conf_file)
+  unlink(file_path)
+  unlink(file.path(folders$data), recursive = TRUE)
+  expect_equal(file.exists(conf_file), FALSE)
+  expect_equal(dir.exists(file.path(folders$data)), FALSE)
+  expect_equal(file.exists(file_path), FALSE)
+})
+

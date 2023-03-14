@@ -4,16 +4,17 @@
 \alias{cleanup_folders}
 \title{Cleanup Folders}
 \usage{
-cleanup_folders(folders, conf_file = NULL, keep_conf = TRUE)
+cleanup_folders(folders, conf_file = NULL, keep_conf = TRUE, recursive = FALSE)
 }
 \arguments{
-\item{folders}{(list) A named list of standard folders for an R project.
-(Default: folders::get_folders())}
+\item{folders}{(list) A named list of standard folders for an R project.}
 
 \item{conf_file}{(character) Configuration file to read/write. 
 See: config::get(). (Default: NULL)}
 
 \item{keep_conf}{(boolean) Keep the configuration file if TRUE. (Default: TRUE)}
+
+\item{recursive}{(boolean) Cleanup subfolders recursively if TRUE. (Default: TRUE)}
 }
 \value{
 (integer) A vector of results: 0 for success; 1 for failure; NULL for skipped.
@@ -23,8 +24,9 @@ Remove empty folders from the folders list as well as the configuration file.
 }
 \section{Details}{
 
-Each non-empty folder in the list of folders will be removed. The configuration  
-file will also be removed if keep_conf is set to FALSE.
+Each empty folder in the list of folders will be removed. If recursive is
+set to FALSE, then empty subfolders will not be removed. The configuration  
+file will be removed if keep_conf is set to FALSE.
 }
 
 \examples{
