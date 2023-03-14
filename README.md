@@ -274,6 +274,16 @@ that project phase using the same variables, e.g., `folders$data`,
 df <- read.csv(here(folders$data, "data.csv"))
 ```
 
+If you want to remove empty folders recursively, you can include this code at 
+the end of your script:
+
+
+```r
+# Cleanup empty folders recursively
+dir_lst <- sort(list.dirs(unlist(lapply(folders, here))), decreasing = TRUE)
+res <- sapply(dir_lst, cleanup_folders, conf_file = conf_file)
+```
+
 ## Configuration file
 
 The configuration file, if not already present, will be written by `get_folders()` 
