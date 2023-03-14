@@ -112,7 +112,7 @@ devtools::install_github("deohs/folders")
 
 Or, if you prefer using *pacman*:
 
-```{r, eval=TRUE, message=FALSE}
+```{r, eval=FALSE, message=FALSE}
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_install_gh("deohs/folders")
 ```
@@ -120,7 +120,8 @@ pacman::p_install_gh("deohs/folders")
 ## Dependencies
 
 When you install this package, the following dependencies should be installed 
-for you: [config](https://CRAN.R-project.org/package=config), [here](https://CRAN.R-project.org/package=here), 
+for you: [config](https://CRAN.R-project.org/package=config), 
+[here](https://CRAN.R-project.org/package=here), 
 [yaml](https://CRAN.R-project.org/package=yaml).
 
 You will need to load the *here* package with your scripts to make the most use 
