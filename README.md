@@ -218,7 +218,7 @@ file.exists(file_path)
 
 ```r
 # Cleanup unused (empty) folders (Optional, as you may prefer to keep them)
-result <- cleanup_folders(folders, conf_file)
+result <- cleanup_folders(folders)
 
 # Verify that the data folder and CSV file still exist after cleanup
 file.exists(file_path)
@@ -290,7 +290,7 @@ then it's as simple as:
 
 ```r
 # Cleanup empty folders recursively (using development version of package)
-result <- cleanup_folders(folders, conf_file, recursive = TRUE)
+result <- cleanup_folders(folders, recursive = TRUE)
 ```
 
 ## Configuration file
