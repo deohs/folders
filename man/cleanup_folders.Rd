@@ -4,7 +4,7 @@
 \alias{cleanup_folders}
 \title{Cleanup Folders}
 \usage{
-cleanup_folders(folders, conf_file, keep_conf = TRUE)
+cleanup_folders(folders, conf_file = NULL, keep_conf = TRUE)
 }
 \arguments{
 \item{folders}{(list) A named list of standard folders for an R project.

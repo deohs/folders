@@ -1,4 +1,20 @@
 test_that("cleanup_folders works with defaults", {
+  folders <- get_folders()
+  result <- create_folders(folders)
+  cleanup_result <- cleanup_folders(folders)
+  names(cleanup_result) <- basename(names(cleanup_result))
+  cleanup_result_default <- c(
+    code = 0,
+    conf = 0,
+    data = 0,
+    doc = 0,
+    figures = 0,
+    results = 0
+  )
+  expect_equal(cleanup_result, cleanup_result_default)
+})
+
+test_that("cleanup_folders works with configuration file specified", {
   conf_file <- tempfile("folders.yml")
   folders <- get_folders(conf_file)
   expect_equal(file.exists(conf_file), TRUE)
@@ -87,3 +103,4 @@ test_that("cleanup_folders works with non-empty folders", {
   expect_equal(dir.exists(file.path(folders$data)), FALSE)
   expect_equal(file.exists(file_path), FALSE)
 })
+

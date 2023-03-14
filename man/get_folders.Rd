@@ -5,7 +5,7 @@
 \title{Get Folders}
 \usage{
 get_folders(
-  conf_file,
+  conf_file = NULL,
   conf_name = Sys.getenv("R_CONFIG_NAME"),
   save_conf = TRUE
 )

@@ -18,8 +18,12 @@
 #' result <- create_folders(folders)
 #' result <- cleanup_folders(folders, conf_file)
 #' @export
-cleanup_folders <- function(folders, conf_file, keep_conf = TRUE) {
-  result1 <- if (keep_conf == FALSE) unlink(conf_file) else NULL
+cleanup_folders <- function(folders, conf_file = NULL, keep_conf = TRUE) {
+  result1 <- if (!is.null(conf_file) && keep_conf == FALSE) {
+    unlink(conf_file)
+  } else {
+    NULL
+  }
   
   result2 <- sapply(here::here(unlist(folders)), function(x) {
     if (length(dir(x)) == 0) unlink(x, recursive = TRUE) else NULL
