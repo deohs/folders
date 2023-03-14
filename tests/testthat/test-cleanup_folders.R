@@ -113,7 +113,7 @@ test_that("cleanup_folders works recursively with non-empty folders", {
   write.csv(data.frame(x = 1:3), file_path)
   cleanup_result <- cleanup_folders(folders, conf_file, recursive = TRUE)
   names(cleanup_result) <- gsub(paste0(tempdir(), '/'), '', 
-                                names(cleanup_result))
+                                names(cleanup_result), fixed = TRUE)
   cleanup_result_default <-
     list(
       `results/test` = 0,
