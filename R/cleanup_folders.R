@@ -4,7 +4,7 @@
 #' @param folders (list) A named list of standard folders for an R project.
 #'     (Default: folders::get_folders())
 #' @param conf_file (character) Configuration file to read/write. 
-#'     See: config::get().
+#'     See: config::get(). (Default: NULL)
 #' @param keep_conf (boolean) Keep the configuration file if TRUE. (Default: TRUE)
 #' @return (integer) A vector of results: 0 for success; 1 for failure; NULL for skipped.
 #' @keywords consistency

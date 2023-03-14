@@ -4,21 +4,14 @@
 \alias{get_folders}
 \title{Get Folders}
 \usage{
-get_folders(
-  conf_file = NULL,
-  conf_name = Sys.getenv("R_CONFIG_NAME"),
-  save_conf = TRUE
-)
+get_folders(conf_file = NULL, conf_name = Sys.getenv("R_CONFIG_NAME"))
 }
 \arguments{
 \item{conf_file}{(character) Configuration file to read/write.
-See: config::get().}
+See: config::get(). (Default: NULL)}
 
 \item{conf_name}{(character) Name of configuration to read.
 See: config::get(). (Default: Sys.getenv("R_CONFIG_NAME"))}
-
-\item{save_conf}{(boolean) Whether or not to save new configuration file.
-(Default: TRUE)}
 }
 \value{
 (list) The named folders for a standard file structure, will be

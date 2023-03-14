@@ -11,7 +11,7 @@ cleanup_folders(folders, conf_file = NULL, keep_conf = TRUE)
 (Default: folders::get_folders())}
 
 \item{conf_file}{(character) Configuration file to read/write. 
-See: config::get().}
+See: config::get(). (Default: NULL)}
 
 \item{keep_conf}{(boolean) Keep the configuration file if TRUE. (Default: TRUE)}
 }
