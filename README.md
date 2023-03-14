@@ -50,7 +50,7 @@ determined by the *here* package.
 
 If you are neither working in an RStudio project, nor in a folder tracked by a 
 version control system (git or Subversion), nor an R package development 
-folder, then the current working directory at the time the `here` package was 
+folder, then the current working directory at the time the *here* package was 
 loaded will be treated as the "project root" folder. 
 
 Or you can force a folder to be the "project root" with a `.here` file. You 
@@ -60,6 +60,13 @@ reproducible code and follow best practices, you should really ask yourself why
 you are not using RStudio Projects or version control.
 
 ## Installation
+
+You can install the stable version from *CRAN* with:
+
+
+```r
+install.packages("folders")
+```
 
 You can install the development version from *GitHub* with:
 
@@ -86,8 +93,7 @@ use of standardized folders in your projects.
 ```r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
-pacman::p_load(here)
-pacman::p_load_gh("deohs/folders")
+pacman::p_load(here, folders)
 
 # Get the list of standard folders and create any folders which are missing
 conf_file <- here('conf', 'folders.yml')
@@ -116,15 +122,14 @@ file_path <- here(folders$data, "data.csv")
 ## Basic Usage Scenario
 
 Here is an example of a script which will initialize the folders and then write 
-a data file to the `folders$data` folder. You will see that there are no 
-hardcoded paths for files or folders and no use of `setwd()`.
+a data file to the `folders$data` folder. Aside from setting the path to the
+configuration file, there are no hardcoded paths and there is no `setwd()`.
 
 
 ```r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
-pacman::p_load(here)
-pacman::p_load_gh("deohs/folders")
+pacman::p_load(here, folders)
 
 # Get the list of standard folders and create any folders which are missing
 conf_file <- here('conf', 'folders.yml')
@@ -252,8 +257,7 @@ do so with any text editor or with R as shown below.
 ```r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
-pacman::p_load(here, yaml)
-pacman::p_load_gh("deohs/folders")
+pacman::p_load(here, yaml, folders)
 
 # Get the list of standard folders, creating the configuration file if missing
 conf_file <- here('conf', 'folders.yml')
