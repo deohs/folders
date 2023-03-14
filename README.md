@@ -118,7 +118,7 @@ Or, if you prefer using *pacman*:
 
 ```r
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
-pacman::p_load_gh("deohs/folders")
+pacman::p_install_gh("deohs/folders")
 ```
 
 ## Basic Usage
