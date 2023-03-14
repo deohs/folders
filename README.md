@@ -29,7 +29,7 @@ Without this package, you could include some code like this in your scripts:
 library(here)
 folders <- list(data = "data", figures = "figures", results = "results")
 folders <- lapply(folders, here)
-result <- lapply(folders, dir.create, recursive = TRUE)
+result <- lapply(folders, dir.create, showWarnings = FALSE, recursive = TRUE)
 
 # Save some data to a file in the "data" folder
 write.csv(iris, file = here(folders$data, "iris.csv"))
