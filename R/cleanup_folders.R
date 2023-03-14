@@ -27,7 +27,7 @@ cleanup_folders <- function(folders, conf_file = NULL,
     NULL
   }
   
-  if(recursive) {
+  if (recursive) {
     dirs <- sort(list.dirs(unlist(lapply(folders, here::here))), 
                  decreasing = TRUE)
   } else {
