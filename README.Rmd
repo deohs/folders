@@ -19,6 +19,42 @@ Using the defaults, or some other standardized list of folder names,
 all of your projects can have the same general folder structure. This can help 
 you write cleaner, more portable, and more reproducible code.
 
+## What does this package do?
+
+Without this package, you could include some code like this in your scripts:
+
+```{r, eval=FALSE}
+# Create some standard folders in my project
+library(here)
+folders <- list(data = "data", figures = "figures", results = "results")
+folders <- lapply(folders, here)
+result <- lapply(folders, dir.create, recursive = TRUE)
+
+# Save some data to a file in the "data" folder
+write.csv(iris, file = here(folders$data, "iris.csv"))
+
+# Cleanup unused folders
+result <- lapply(folders, function(x) {
+  if (length(dir(x)) == 0) unlink(x, recursive = TRUE)
+})
+
+# Confirm that the data file still exists
+file.exists(here(folders$data, "iris.csv"))
+```
+
+There is no persistence of the standard folder names, however, and if you
+needed to use an alternate folder path, you would need to modify this script 
+and any other that used that alternate path.
+
+However, using *folders*, you can specify a project-wide configuration file
+which will store these standard folder names. Any customization can be 
+made to that file, and the other scripts in your project can use that file
+with no extra changes needed to them. Collaborators can have their own custom 
+folder paths without modifying the shared scripts and affecting the other 
+collaborators. Plus there is less code needed in each script to make use of 
+these standard or customized folder paths, as the *folders* package takes 
+care of the details.
+
 ## Default Folders
 
 The package defaults provide "code", "conf", "data", "doc", "figures" and 
