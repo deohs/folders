@@ -21,7 +21,7 @@
 #' list from a non-default section of the configuration file, set the name of
 #' the section with the "conf_name" parameter.
 #' @examples
-#' conf_file <- tempfile("folders.yml")
+#' conf_file <- tempfile("folders.yml")     # Using tempfile() for testing only
 #' folders <- get_folders(conf_file)
 #' folders <- get_folders(conf_file, conf_name = "custom")
 #' Sys.setenv(R_CONFIG_NAME = "custom")
