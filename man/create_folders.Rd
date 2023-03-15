@@ -36,14 +36,14 @@ base::dir.exists() as shown in the examples below.
 \examples{
 conf_file <- tempfile("folders.yml")
 folders <- get_folders(conf_file)
-folders <- lapply(folders, function(x) file.path(tempdir(), x))
+folders <- lapply(folders, function(x) here::here(tempdir(), x))
 result <- create_folders(folders)
 
-dir.exists(conf_file)
+file.exists(conf_file)
 sapply(folders, dir.exists)
 
 df <- data.frame(x = letters[1:3], y = 1:3)
-file_path <- file.path(folders$data, "data.csv")
+file_path <- here::here(folders$data, "data.csv")
 write.csv(df, file_path, row.names = FALSE)
 file.exists(file_path)
 }

@@ -15,7 +15,7 @@
 #' @examples
 #' conf_file <- tempfile("folders.yml")
 #' folders <- get_folders(conf_file)
-#' folders <- lapply(folders, function(x) file.path(tempdir(), x))
+#' folders <- lapply(folders, function(x) here::here(tempdir(), x))
 #' result <- create_folders(folders)
 #' result <- cleanup_folders(folders, conf_file)
 #' @export
