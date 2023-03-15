@@ -36,6 +36,7 @@ the section with the "conf_name" parameter.
 }
 
 \examples{
+folders <- get_folders()                 # Configuration file not used
 conf_file <- tempfile("folders.yml")     # Using tempfile() for testing only
 folders <- get_folders(conf_file)
 folders <- get_folders(conf_file, conf_name = "custom")
