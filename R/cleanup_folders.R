@@ -13,11 +13,19 @@
 #' set to TRUE, then empty subfolders will be removed first. The configuration  
 #' file will be removed if keep_conf is set to FALSE.
 #' @examples
+#' # Create list of standard folder names and store in a configuration file
 #' conf_file <- tempfile("folders.yml")
 #' folders <- get_folders(conf_file)
-#' folders <- lapply(folders, function(x) here::here(tempdir(), x))
+#' 
+#' # Testing only: Append folder names to parent folder path --
+#' #               This would NOT be needed or desired in normal usage
+#' folders <- lapply(folders, function(x) file.path(tempdir(), x))
+#' 
+#' # Create a folder for each item in "folders" list
 #' result <- create_folders(folders)
-#' result <- cleanup_folders(folders, conf_file)
+#' 
+#' # Remove empty folders, leaving only those with files or subfolders in them
+#' result <- cleanup_folders(folders)
 #' @export
 cleanup_folders <- function(folders, conf_file = NULL, 
                             keep_conf = TRUE, recursive = FALSE) {
