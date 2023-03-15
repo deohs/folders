@@ -29,8 +29,7 @@ case the folder already exists. Recursive folder creation is supported. These
 two features can be controlled with the "showWarnings" and "recursive"
 parameters. A TRUE value in the returned vector means the folder was created 
 by dir.create(). If a folder already exists, the returned vector will have a 
-FALSE value for that folder. You can test the existence of the folders with
-base::dir.exists() as shown in the examples below.
+FALSE value for that folder.
 }
 
 \examples{
