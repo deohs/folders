@@ -18,7 +18,7 @@
 #' FALSE value for that folder.
 #' @examples
 #' # Create list of standard folder names and store in a configuration file
-#' conf_file <- tempfile("folders.yml")
+#' conf_file <- tempfile("folders.yml")     # Using tempfile() for testing only
 #' folders <- get_folders(conf_file)
 #' 
 #' # Testing only: Append folder names to parent folder path --
