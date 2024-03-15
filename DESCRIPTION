@@ -4,6 +4,7 @@ Version: 0.1.0
 Authors@R: c(person("Brian", "High", email = "bhigh@live.com",
     role = c("aut", "cre")), 
   person("University of Washington", role = c("cph", "fnd")))
+Maintainer: Brian High <bhigh@live.com>
 URL: https://github.com/deohs/folders
 BugReports: https://github.com/deohs/folders/issues
 Description: Supports the use of standardized folder names.
