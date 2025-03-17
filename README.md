@@ -24,7 +24,7 @@ you write cleaner, more portable, and more reproducible code.
 Without this package, you could include some code like this in your scripts:
 
 
-```r
+``` r
 # Create some standard folders in my project
 library(here)
 folders <- list(data = "data", figures = "figures", results = "results")
@@ -69,7 +69,7 @@ to the *here* package.
 
 ## RStudio Projects
 
-This package is intended to be used with RStudio Projects. 
+This package is intended to be used with [RStudio Projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects). 
 
 A benefit of using RStudio Projects is, once you open the project in RStudio, 
 you will be placed in the parent folder of your project (aka. "project root"). 
@@ -81,9 +81,9 @@ will most likely want to clone this repository into an RStudio Project.
 ## Other Supported Environments
 
 This package will also work outside of RStudio Projects. For example, 
-if you are working in a folder tracked by git, then the top level of the git 
-repository will be identified as the "project root" folder. This behavior is 
-determined by the *here* package.
+if you are working in a folder tracked by [git](https://docs.posit.co/ide/user/ide/guide/tools/version-control.html), 
+then the top level of the git repository will be identified as the 
+"project root" folder. This behavior is determined by the *here* package.
 
 If you are neither working in an RStudio project, nor in a folder tracked by a 
 version control system (git or Subversion), nor an R package development 
@@ -101,14 +101,14 @@ you are not using RStudio Projects or version control.
 You can install the stable version from *CRAN* with:
 
 
-```r
+``` r
 install.packages("folders")
 ```
 
 You can install the development version from *GitHub* with:
 
 
-```r
+``` r
 # install.packages("devtools")
 devtools::install_github("deohs/folders")
 ```
@@ -116,7 +116,7 @@ devtools::install_github("deohs/folders")
 Or, if you prefer using *pacman*:
 
 
-```r
+``` r
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_install_gh("deohs/folders")
 ```
@@ -137,7 +137,7 @@ The following code chunk can be used at the beginning of your scripts to make
 use of standardized folders in your projects.
 
 
-```r
+``` r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here, folders)
@@ -151,7 +151,7 @@ result <- create_folders(folders)
 Then, later in your scripts, you can refer to folders like this:
 
 
-```r
+``` r
 dir.exists(here(folders$data))
 ```
 
@@ -162,7 +162,7 @@ dir.exists(here(folders$data))
 Or you can add to the standard folder paths like this: 
 
 
-```r
+``` r
 file_path <- here(folders$data, "data.csv")
 ```
 
@@ -173,7 +173,7 @@ a data file to the `folders$data` folder. Aside from setting the path to the
 configuration file, there are no hardcoded paths and there is no `setwd()`.
 
 
-```r
+``` r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here, folders)
@@ -191,7 +191,7 @@ dir.exists(here(folders$data))
 ## [1] TRUE
 ```
 
-```r
+``` r
 # Create a dataset to use for writing a CSV file to the data folder
 df <- data.frame(x = letters[1:3], y = 1:3)
 
@@ -204,7 +204,7 @@ file.exists(file_path)
 ## [1] FALSE
 ```
 
-```r
+``` r
 # Write the CSV file
 write.csv(df, file_path, row.names = FALSE)
 
@@ -216,7 +216,7 @@ file.exists(file_path)
 ## [1] TRUE
 ```
 
-```r
+``` r
 # Cleanup unused (empty) folders (Optional, as you may prefer to keep them)
 result <- cleanup_folders(folders)
 
@@ -228,7 +228,7 @@ file.exists(file_path)
 ## [1] TRUE
 ```
 
-```r
+``` r
 # Verify that the configuration file still exists after cleanup
 file.exists(conf_file)
 ```
@@ -244,7 +244,7 @@ You can refer to subfolders relative to the paths in your `folders` list using
 just refer to that folder with `here(folders$data, "raw")`:
 
 
-```r
+``` r
 conf_file <- here('conf', 'folders.yml')
 folders <- get_folders(conf_file)
 raw_df <- here(folders$data, "raw", "file.csv")
@@ -256,7 +256,7 @@ we can create a "phase" folder under each folder in `folders` and then a "01"
 folder under each "phase" folder:
 
 
-```r
+``` r
 conf_file <- here('conf', 'folders.yml')
 folders <- lapply(get_folders(conf_file), here, "phase", "01")
 res <- create_folders(folders) 
@@ -270,7 +270,7 @@ that project phase using the same variables, e.g., `folders$data`,
 `folders$results`, etc.
 
 
-```r
+``` r
 df <- read.csv(here(folders$data, "data.csv"))
 ```
 
@@ -278,18 +278,18 @@ If you want to remove empty folders recursively, you can include this code at
 the end of your script:
 
 
-```r
+``` r
 # Cleanup empty folders recursively
 dir_lst <- sort(list.dirs(unlist(lapply(folders, here))), decreasing = TRUE)
 result <- sapply(dir_lst, cleanup_folders, conf_file = conf_file)
 ```
 
-Or, if you are using the latest development version of the package from GitHub,
+Or, if you are using the latest stable version of the package from CRAN,
 then it's as simple as:
 
 
-```r
-# Cleanup empty folders recursively (using development version of package)
+``` r
+# Cleanup empty folders recursively
 result <- cleanup_folders(folders, recursive = TRUE)
 ```
 
@@ -320,7 +320,7 @@ maximum consistency between your projects. If you do wish to edit it, you can
 do so with any text editor or with R as shown below.
 
 
-```r
+``` r
 # Load packages, installing as needed
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages('pacman')
 pacman::p_load(here, yaml, folders)
@@ -356,7 +356,7 @@ Darwin:
 And then you can read in the appropriate paths for the system you are using:
 
 
-```r
+``` r
 conf_file <- here('conf', 'folders.yml')
 folders <- get_folders(conf_file, conf_name = Sys.info()[['sysname']])
 data_folder <- folders$data

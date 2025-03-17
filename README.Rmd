@@ -68,7 +68,7 @@ to the *here* package.
 
 ## RStudio Projects
 
-This package is intended to be used with RStudio Projects. 
+This package is intended to be used with [RStudio Projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects). 
 
 A benefit of using RStudio Projects is, once you open the project in RStudio, 
 you will be placed in the parent folder of your project (aka. "project root"). 
@@ -80,9 +80,9 @@ will most likely want to clone this repository into an RStudio Project.
 ## Other Supported Environments
 
 This package will also work outside of RStudio Projects. For example, 
-if you are working in a folder tracked by git, then the top level of the git 
-repository will be identified as the "project root" folder. This behavior is 
-determined by the *here* package.
+if you are working in a folder tracked by [git](https://docs.posit.co/ide/user/ide/guide/tools/version-control.html), 
+then the top level of the git repository will be identified as the 
+"project root" folder. This behavior is determined by the *here* package.
 
 If you are neither working in an RStudio project, nor in a folder tracked by a 
 version control system (git or Subversion), nor an R package development 
@@ -240,11 +240,11 @@ dir_lst <- sort(list.dirs(unlist(lapply(folders, here))), decreasing = TRUE)
 result <- sapply(dir_lst, cleanup_folders, conf_file = conf_file)
 ```
 
-Or, if you are using the latest development version of the package from GitHub,
+Or, if you are using the latest stable version of the package from CRAN,
 then it's as simple as:
 
 ```{r, eval=FALSE}
-# Cleanup empty folders recursively (using development version of package)
+# Cleanup empty folders recursively
 result <- cleanup_folders(folders, recursive = TRUE)
 ```
 
